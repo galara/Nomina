@@ -1,4 +1,18 @@
 ERP - Hotelero
-	Módulo nominas
+	Módulo administración
+		*Usuarios
+		*Configuración
 
 		
+	Módulo nominas
+		*Departamentos
+		*Puestos
+		*Empleados
+			*Puesto
+			*Datos personales
+			*Datos laborales
+			*Expediente
+			*Historial
+		*Nominas
+			*sueldos y salarios
+			*Comisiones
