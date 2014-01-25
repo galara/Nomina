@@ -23,15 +23,31 @@ ERP - Hotelero
 		*Puestos
 			*Consultas
 		*Empleados
-			*Puesto
-			*Datos personales
-			*Datos laborales
-			*Expediente
-			*Historial
+			*Número de empleado
+			*CURP
+			*Tipo regimen (nomina)
+			*NSS
+			*Fecha pago
+			*Fecha inicial pago
+			*Fecha final pago
+			*Num días pagados
+			*Departamento
+			*Clabe
+			*Banco (nomina)
+			*Fecha inicio relación laboral
+			*Antigüedad (semanas)
+			*Puesto 
+			*Tipo contrato (nomina)
+			*Tipo jornada
+			*Periodicidad pago
+			*Salario base cotapor
+			*Riego puesto (nominas)
+			*Salario diario
 		*Nominas
 			*Regimen de contratación del trabajador
 			*Catálogo de bancos
 			*Riesgo del puesto
 			*Percepciones
 			*Deducciones
+			*Tipo jornadas
 			*Incapacidades
