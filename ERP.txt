@@ -29,5 +29,9 @@ ERP - Hotelero
 			*Expediente
 			*Historial
 		*Nominas
-			*sueldos y salarios
-			*Comisiones
+			*Regimen de contratación del trabajador
+			*Catálogo de bancos
+			*Riesgo del puesto
+			*Percepciones
+			*Deducciones
+			*Incapacidades
