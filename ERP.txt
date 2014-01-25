@@ -1,12 +1,27 @@
 ERP - Hotelero
+
 	Módulo administración
 		*Usuarios
 		*Configuración
+			*Configuración de la(s) empresa(s)
+			*Configuración del sitema de nomina
+				*Departamentos
+					*Crear
+					*Habilitar
+					*Deshabilitar
+				*Puestos
+					*Crear
+					*Habilitar
+					*Deshabilitar
+				*Expedientes
+					*Datos y tipo de dato que se guardará
 
 		
 	Módulo nominas
 		*Departamentos
+			*Consultas
 		*Puestos
+			*Consultas
 		*Empleados
 			*Puesto
 			*Datos personales
