@@ -2,6 +2,7 @@ ERP - Hotelero
 
 	Módulo administración
 		*Usuarios
+			*Liga a empleado
 		*Configuración
 			*Configuración de la(s) empresa(s)
 			*Configuración del sitema de nomina
