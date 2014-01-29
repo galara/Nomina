@@ -4,9 +4,6 @@
 Create database if not exists SICEN;
 use SICEN;
 /*
-	Se crean las tablas principales de la base de datos
-*/
-/*
 	Catálogos del sistema
 */
 create table if not exists cat_departamentos
@@ -24,7 +21,46 @@ create table if not exists cat_puestos
 	descripcion varchar(500),
 	activo bool default true
 );
-
+create table if not exists cat_tipoContrato
+(
+	clave varchar(5) primary key,
+	tipoContrato varchar(50),
+	activo bool default true
+);
+insert into cat_tipoContrato (clave,tipoContrato) values ('01','Base');
+insert into cat_tipoContrato (clave,tipoContrato) values ('02','Eventual');
+insert into cat_tipoContrato (clave,tipoContrato) values ('03','Confianza');
+insert into cat_tipoContrato (clave,tipoContrato) values ('04','Sindicalizado');
+insert into cat_tipoContrato (clave,tipoContrato) values ('05','a prueba');
+create table if not exists cat_tiposJornadas
+(
+	clave varchar(5) primary key,
+	tipoJornada varchar(50),
+	activo bool default true
+);
+insert into cat_tiposJornadas (clave,tipoJornada) values ('01','Diurna');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('02','Nocturna');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('03','Mixta');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('04','Por hora');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('05','Reducida');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('06','Continuada');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('07','Partida');
+insert into cat_tiposJornadas (clave,tipoJornada) values ('08','Por turnos');
+create table if not exists cat_periodicidadesPagos
+(
+	clave varchar(5) primary key,
+	periodoPago varchar(50),
+	activo bool default true
+);
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('01','diario');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('02','semanal');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('03','quincenal');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('04','catorcenal');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('05','mensual');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('06','bimestral');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('07','unidad de obra');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('08','comicion');
+insert into cat_periodicidadesPagos (clave, periodoPago) values ('09','precio alcanzado');
 /*
 	Catálogos complementon nomina
 */
@@ -243,3 +279,22 @@ create table if not exists cat_TipoIncapacidad
 insert into cat_TipoIncapacidad (clave,descripcion) values ('1', 'Riesgo de trabajo');
 insert into cat_TipoIncapacidad (clave,descripcion) values ('2', 'Enfermedad en general');
 insert into cat_TipoIncapacidad (clave,descripcion) values ('3', 'Maternidad');
+/*
+	Se crean las tablas principales de la base de datos
+*/
+create table if not exists sys_empleados
+(
+	numEmp varchar(5) primary key,
+	curp varchar(18),
+	tipoRegimen varchar(5) references cat_RCT(clave),
+	nss varchar(12),
+	fechaPago date,
+	fechaInicialPago date,
+	fechaFinalPago date,
+	numDiasPagados int,
+	clavePuesto varchar(5) references cat_puestos(clave),
+	clabe varchar(25),
+	banco varchar(5) references cat_Bancos(clave),
+	fechaInicioRelacionLab date,
+	tipoContrato varchar(5) references cat_
+);
