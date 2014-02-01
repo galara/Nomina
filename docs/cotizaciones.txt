@@ -1,2 +1,12 @@
 InvoiceOne
+
+FacturaFactible sergio.luna@solucionfactible.com
+	*Pago inicial de $750 + IVA (unico) por  RFC
+	*Timbre $1 + IVA (minimo 500)
+		*Apartir de 25,000 (.75 + IVA)
+
+	*Panel para distintos RFC
+		*12,500 + IVA (Pago unico)
+		
+	
 	
