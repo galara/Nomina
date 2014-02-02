@@ -12,6 +12,36 @@ CREATE TABLE IF NOT EXISTS cat_departamentos
 	descripcion VARCHAR(500),
 	activo BOOL DEFAULT TRUE
 );
+/*
+Creacion procedimiento almacenado insertar
+*/
+DELIMITER //
+drop procedure if exists sp_ins_dep //
+CREATE PROCEDURE sp_ins_dep(IN id VARCHAR(5), dep VARCHAR(100), des VARCHAR(500)) BEGIN
+INSERT INTO cat_departamentos (clave,departamento,descripcion) VALUES (id,dep,des);
+end 
+//
+DELIMITER ;
+/*
+Creación procedimiento modificar
+*/
+DELIMITER //
+drop procedure if exists sp_mod_dep //
+CREATE PROCEDURE sp_mod_dep(IN dep VARCHAR(100), des VARCHAR(500), id varchar(5)) BEGIN
+Update cat_departamentos set departamento=dep,descripcion=des where clave=id;
+end 
+//
+DELIMITER ;
+/*
+Creación procedimiento eliminar
+*/
+DELIMITER //
+drop procedure if exists sp_del_dep //
+CREATE PROCEDURE sp_del_dep(IN id varchar(5)) BEGIN
+Update cat_departamentos set activo=false where clave=id;
+end 
+//
+DELIMITER ;
 CREATE TABLE IF NOT EXISTS cat_puestos
 (
 	clave VARCHAR(5) PRIMARY KEY,
@@ -26,11 +56,21 @@ CREATE TABLE IF NOT EXISTS cat_tipoContrato
 	tipoContrato VARCHAR(50),
 	activo BOOL DEFAULT TRUE
 );
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES ('01','Base');
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES ('02','Eventual');
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES ('03','Confianza');
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES ('04','Sindicalizado');
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES ('05','a prueba');
+/*
+Creación del procedimiento almacenado insertar tipos de contrato
+*/
+DELIMITER //
+drop procedure if exists sp_ins_tipocontrato //
+CREATE PROCEDURE sp_ins_tipocontrato(IN id VARCHAR(5), tipo VARCHAR(100)) BEGIN
+INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES (id,tipo);
+end 
+//
+DELIMITER ;
+call sp_ins_tipocontrato('01','Base');
+call sp_ins_tipocontrato('02','Eventual');
+call sp_ins_tipocontrato('03','Confianza');
+call sp_ins_tipocontrato('04','Sindicalizado');
+call sp_ins_tipocontrato('05','a prueba');
 CREATE TABLE IF NOT EXISTS cat_tiposJornadas
 (
 	clave VARCHAR(5) PRIMARY KEY,
