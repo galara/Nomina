@@ -3,7 +3,7 @@ class Conexion
 {
 	var $conect;
 	function __construct() {
-		$this->conect = new mysqli('127.0.0.1', 'root', 'admin', 'prod_tamb');
+		$this->conect = new mysqli('localhost', 'root', 'admin', 'sicen');
 		if (mysqli_connect_error()) {
 		    die('Error de Conexión (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
@@ -35,7 +35,7 @@ class Conexion
 
 	function query($query,$conn)
 	{
-		$result = mysqli_query($conn,$query);
+		$result = mysqli_query($this->conect,$query);
 		return $result;
 	}
 
