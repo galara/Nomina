@@ -1,4 +1,9 @@
 InvoiceOne
+	*Pago inicial (unico) $5,500 + IVA
+	*Timbre $0.50 de 1 a 24999
+	*Timbre $0.40 de 25000 a 4799
+	*Timbre $0.30 de 4800 en adelante
+	*Multi rfc, solo se necesita un control interno para el manejo de los timbres 
 
 FacturaFactible sergio.luna@solucionfactible.com
 	*Pago inicial de $750 + IVA (unico) por  RFC

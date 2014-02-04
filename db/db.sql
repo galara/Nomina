@@ -12,36 +12,6 @@ CREATE TABLE IF NOT EXISTS cat_departamentos
 	descripcion VARCHAR(500),
 	activo BOOL DEFAULT TRUE
 );
-/*
-Creacion procedimiento almacenado insertar
-*/
-DELIMITER //
-drop procedure if exists sp_ins_dep //
-CREATE PROCEDURE sp_ins_dep(IN id VARCHAR(5), dep VARCHAR(100), des VARCHAR(500)) BEGIN
-INSERT INTO cat_departamentos (clave,departamento,descripcion) VALUES (id,dep,des);
-end 
-//
-DELIMITER ;
-/*
-Creación procedimiento modificar
-*/
-DELIMITER //
-drop procedure if exists sp_mod_dep //
-CREATE PROCEDURE sp_mod_dep(IN dep VARCHAR(100), des VARCHAR(500), id varchar(5)) BEGIN
-Update cat_departamentos set departamento=dep,descripcion=des where clave=id;
-end 
-//
-DELIMITER ;
-/*
-Creación procedimiento eliminar
-*/
-DELIMITER //
-drop procedure if exists sp_del_dep //
-CREATE PROCEDURE sp_del_dep(IN id varchar(5)) BEGIN
-Update cat_departamentos set activo=false where clave=id;
-end 
-//
-DELIMITER ;
 CREATE TABLE IF NOT EXISTS cat_puestos
 (
 	clave VARCHAR(5) PRIMARY KEY,
@@ -50,86 +20,24 @@ CREATE TABLE IF NOT EXISTS cat_puestos
 	descripcion VARCHAR(500),
 	activo BOOL DEFAULT TRUE
 );
-/*
-Creacion procedimiento almacenado insertar
-*/
-DELIMITER //
-drop procedure if exists sp_ins_puesto //
-CREATE PROCEDURE sp_ins_puesto(IN id VARCHAR(5), dep varchar(5),pues VARCHAR(100), des VARCHAR(500)) BEGIN
-INSERT INTO cat_puestos (clave,claveDep,puesto,descripcion) VALUES (id,dep,pues,des);
-end 
-//
-DELIMITER ;
-/*
-Creación procedimiento modificar
-*/
-DELIMITER //
-drop procedure if exists sp_mod_puesto //
-CREATE PROCEDURE sp_mod_puesto(IN dep VARCHAR(5), pues VARCHAR(100), des varchar(500), id varchar(5)) BEGIN
-Update cat_puestos set claveDep=dep,puesto=pues,descripcion=des where clave=id;
-end 
-//
-DELIMITER ;
-/*
-Creación procedimiento eliminar
-*/
-DELIMITER //
-drop procedure if exists sp_del_puesto //
-CREATE PROCEDURE sp_del_puesto(IN id varchar(5)) BEGIN
-Update cat_puestos set activo=false where clave=id;
-end 
-//
-DELIMITER ;
 CREATE TABLE IF NOT EXISTS cat_tipoContrato
 (
 	clave VARCHAR(5) PRIMARY KEY,
 	tipoContrato VARCHAR(50),
 	activo BOOL DEFAULT TRUE
 );
-/*
-Creación del procedimiento almacenado insertar tipos de contrato
-*/
-DELIMITER //
-drop procedure if exists sp_ins_tipocontrato //
-CREATE PROCEDURE sp_ins_tipocontrato(IN id VARCHAR(5), tipo VARCHAR(100)) BEGIN
-INSERT INTO cat_tipoContrato (clave,tipoContrato) VALUES (id,tipo);
-end 
-//
-DELIMITER ;
-call sp_ins_tipocontrato('01','Base');
-call sp_ins_tipocontrato('02','Eventual');
-call sp_ins_tipocontrato('03','Confianza');
-call sp_ins_tipocontrato('04','Sindicalizado');
-call sp_ins_tipocontrato('05','a prueba');
 CREATE TABLE IF NOT EXISTS cat_tiposJornadas
 (
 	clave VARCHAR(5) PRIMARY KEY,
 	tipoJornada VARCHAR(50),
 	activo BOOL DEFAULT TRUE
 );
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('01','Diurna');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('02','Nocturna');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('03','Mixta');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('04','Por hora');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('05','Reducida');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('06','Continuada');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('07','Partida');
-INSERT INTO cat_tiposJornadas (clave,tipoJornada) VALUES ('08','Por turnos');
 CREATE TABLE IF NOT EXISTS cat_periodicidadesPagos
 (
 	clave VARCHAR(5) PRIMARY KEY,
 	periodoPago VARCHAR(50),
 	activo BOOL DEFAULT TRUE
 );
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('01','diario');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('02','semanal');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('03','quincenal');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('04','catorcenal');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('05','mensual');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('06','bimestral');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('07','unidad de obra');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('08','comicion');
-INSERT INTO cat_periodicidadesPagos (clave, periodoPago) VALUES ('09','precio alcanzado');
 /*
 	Catálogos complementon nomina
 */
@@ -140,15 +48,15 @@ CREATE TABLE IF NOT EXISTS cat_RCT
 	activo BOOL DEFAULT TRUE
 );
 /*Insertamos elementos del catálogo*/
-INSERT INTO cat_RCT (clave,descripcion) VALUES('2','Sueldos y Salarios');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('3','Jubilados');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('4','Pensionados');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('5','Asimilados a salarios, Miembros de las Sociedades Cooperativas de Producción');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('6','Asimilados a salarios, Integrantes de Sociedades y Asociaciones Civiles');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('7','Asimilados a salarios, Miembros de consejos directivos, de vigilancia, consultivos, honorarios a administradores, comisarios y gerentes generales.');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('8','Asimilados a salarios, Actividad empresarial (comisionistas)');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('9','Asimilados a salarios, Honorarios asimilados a salarios');
-INSERT INTO cat_RCT (clave,descripcion) VALUES('10','Asimilados a salarios, Ingresos acciones o títulos valor');
+('2','Sueldos y Salarios');
+('3','Jubilados');
+('4','Pensionados');
+('5','Asimilados a salarios, Miembros de las Sociedades Cooperativas de Producción');
+('6','Asimilados a salarios, Integrantes de Sociedades y Asociaciones Civiles');
+('7','Asimilados a salarios, Miembros de consejos directivos, de vigilancia, consultivos, honorarios a administradores, comisarios y gerentes generales.');
+('8','Asimilados a salarios, Actividad empresarial (comisionistas)');
+('9','Asimilados a salarios, Honorarios asimilados a salarios');
+('10','Asimilados a salarios, Ingresos acciones o títulos valor');
 CREATE TABLE IF NOT EXISTS cat_Bancos
 (
 	clave VARCHAR(5) PRIMARY KEY,
