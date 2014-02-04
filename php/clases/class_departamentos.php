@@ -18,15 +18,17 @@
 		//Metodo para insertar departamentos
 		function ins_departamento($clave,$departamento,$descripcion)
 		{
-			try {
-				//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
-				$error = "";
+			//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
+			$error = "";
+			try {	
 				//Instrucción para insertar
 				$query = "CALL sp_ins_dep('".$clave."','".$departamento."','".$descripcion."');";
 				$result = $this->conn->query($query,$this->conn->conect);
+				//Se comprueba que la consulta no tenga errores
 				if(!$result)
 				{
-					die('Consulta no v&aacute;lida: ' . mysql_error($result));
+					//Si existe algun error se guarda en la variable
+					$error = mysqli_error($this->conn->conect);
 				}
 			} catch (Exception $e) {
 				$error = $e->getMessage();
@@ -36,12 +38,16 @@
 
 		function mod_departamento($clave,$departamento,$descripcion)
 		{
+			//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
+			$error = "";
 			try {
-				//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
-				$error = "";
 				//Instrucción para insertar
 				$query = "CALL sp_mod_dep('".$departamento."','".$descripcion."','".$clave."')";
-				$this->conn->query($query,$this->conn->conect);
+				$result = $this->conn->query($query,$this->conn->conect);
+				if(!$result)
+				{
+					$error = mysqli_error($this->conn->conect);
+				}
 			} catch (Exception $e) {
 				$error = $e->getMessage();
 			}
@@ -50,12 +56,16 @@
 
 		function elim_departamento($clave)
 		{
+			//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
+			$error = "";
 			try {
-				//Varible error, si no existe error se regresa en blanco, si cae en catch se guarda el error en ella
-				$error = "";
 				//Instrucción para insertar
-				$query = "CALL sp_del_dep('".$clave."')";
-				$this->conn->query($query,$this->conn->conect);
+				$query = "CALL sp_del_dep($clave)";
+				$result = $this->conn->query($query,$this->conn->conect);
+				if(!$result)
+				{
+					$error = mysqli_error($this->conn->conect);
+				}
 			} catch (Exception $e) {
 				$error = $e->getMessage();
 			}

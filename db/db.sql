@@ -50,6 +50,36 @@ CREATE TABLE IF NOT EXISTS cat_puestos
 	descripcion VARCHAR(500),
 	activo BOOL DEFAULT TRUE
 );
+/*
+Creacion procedimiento almacenado insertar
+*/
+DELIMITER //
+drop procedure if exists sp_ins_puesto //
+CREATE PROCEDURE sp_ins_puesto(IN id VARCHAR(5), dep varchar(5),pues VARCHAR(100), des VARCHAR(500)) BEGIN
+INSERT INTO cat_puestos (clave,claveDep,puesto,descripcion) VALUES (id,dep,pues,des);
+end 
+//
+DELIMITER ;
+/*
+Creación procedimiento modificar
+*/
+DELIMITER //
+drop procedure if exists sp_mod_puesto //
+CREATE PROCEDURE sp_mod_puesto(IN dep VARCHAR(5), pues VARCHAR(100), des varchar(500), id varchar(5)) BEGIN
+Update cat_puestos set claveDep=dep,puesto=pues,descripcion=des where clave=id;
+end 
+//
+DELIMITER ;
+/*
+Creación procedimiento eliminar
+*/
+DELIMITER //
+drop procedure if exists sp_del_puesto //
+CREATE PROCEDURE sp_del_puesto(IN id varchar(5)) BEGIN
+Update cat_puestos set activo=false where clave=id;
+end 
+//
+DELIMITER ;
 CREATE TABLE IF NOT EXISTS cat_tipoContrato
 (
 	clave VARCHAR(5) PRIMARY KEY,
@@ -338,6 +368,8 @@ CREATE TABLE IF NOT EXISTS sys_empleados
 	salarioDiario DOUBLE,
 	activo BOOL DEFAULT TRUE
 );
+/*
 CREATE TABLE IF NOT EXISTS sys_reciboNomina
 (
 );
+*/

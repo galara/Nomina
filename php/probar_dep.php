@@ -1,14 +1,15 @@
 <?php
 	include("clases/class_departamentos.php");
-	$conn = new Departamentos();
+	$dep = new Departamentos();
 
-	$error = $conn->ins_departamento("01","Otro","algo");
+	$error = $dep->ins_departamento(3,2,"algo");
 	if($error == "")
 	{
+		echo $dep->error;
 		echo "El Departamento se inserto correctamente";
 	}
 	else
 	{
-		echo "Ocurrio el siguiente error ".$error;
+		echo "Ocurrio el siguiente error: ".$error;
 	}
 ?>
