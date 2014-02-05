@@ -71,5 +71,10 @@
 			}
 			return $error;	
 		}
+
+		function get_all_data()
+		{
+			
+		}
 	}
 ?>

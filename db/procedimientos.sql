@@ -182,3 +182,60 @@ CREATE PROCEDURE sp_del_periodicidadpago(IN id VARCHAR(5)) BEGIN
 update cat_periodicidadesPagos SET activo=FALSE WHERE clave=id;
 END //
 DELIMITER;
+
+
+
+
+ /*
+--------------------------------------------------------------------------
+-       Procedimientos almacenados para la tabla Periodicidad Pago       -
+--------------------------------------------------------------------------
+Creacion procedimiento almacenado insertar
+*/
+DELIMITER //
+DROP PROCEDURE IF EXISTS sp_ins_rct //
+CREATE PROCEDURE sp_ins_rct(IN id VARCHAR(5), rct VARCHAR(200)) BEGIN
+INSERT INTO cat_RCT (clave,descripcion) VALUES (id,rct);
+END //
+DELIMITER;
+/*
+Creación procedimiento modificar
+*/
+DELIMITER //
+DROP PROCEDURE if EXISTS sp_mod_rct //
+CREATE PROCEDURE sp_mod_rct(IN rct VARCHAR(200), id VARCHAR(5)) BEGIN
+update cat_RCT SET descripcion=rct WHERE clave=id;
+END //
+DELIMITER;
+/*
+Creación procedimiento eliminar
+*/
+DELIMITER //
+DROP PROCEDURE if EXISTS sp_del_rct //
+CREATE PROCEDURE sp_del_rct(IN id VARCHAR(5)) BEGIN
+update cat_RCT SET activo=FALSE WHERE clave=id;
+END //
+DELIMITER;
+
+
+
+
+ /*
+--------------------------------------------------------------------------
+-       Procedimientos almacenados para la tabla Periodicidad Pago       -
+--------------------------------------------------------------------------
+Creacion procedimiento almacenado insertar
+*/
+DELIMITER //
+DROP PROCEDURE if EXISTS sp_ins_bancos //
+CREATE PROCEDURE sp_ins_bancos(IN id VARCHAR(5), nombre VARCHAR(50), razon VARCHAR(200)) BEGIN
+INSERT INTO cat_Bamcos(clave,nombreCorto,razonSocial) VALUES (id,nombre,razon);
+END //
+DELIMITER;
+/*
+Creación procedimiento modificar
+*/
+
+/*
+Creación procedimiento eliminar
+*/
